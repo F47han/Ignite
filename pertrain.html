@@ -1,0 +1,1141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IGNITE Fitness | Transform Your Body & Life</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700;800;900&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #ff2a6d;
+            --secondary: #05d9e8;
+            --dark: #121212;
+            --light: #f8f9fa;
+            --accent: #ffa726;
+            --success: #4caf50;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 42, 109, 0.4);
+        }
+        
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 42, 109, 0.6);
+            color: white;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+        
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 42, 109, 0.4);
+        }
+        
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(18, 18, 18, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 900;
+            font-size: 1.8rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 0.9)), url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+            text-align: center;
+            padding-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            color: #ccc;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        /* Section General */
+        section {
+            padding: 100px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .section-title p {
+            color: #aaa;
+            max-width: 700px;
+            margin: 20px auto 0;
+            font-size: 1.1rem;
+        }
+        
+        /* Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .program-card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .program-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 42, 109, 0.3);
+        }
+        
+        .program-header {
+            padding: 25px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            text-align: center;
+        }
+        
+        .program-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+        
+        .program-body {
+            padding: 25px;
+        }
+        
+        .program-features {
+            margin: 20px 0;
+        }
+        
+        .program-features li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .program-features li i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        .price {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin: 15px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-img {
+            flex: 1;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        
+        .about-img:hover img {
+            transform: scale(1.05);
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-text h2 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .stat-text {
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        /* Transformations Section */
+        .transformations {
+            background: linear-gradient(rgba(18, 18, 18, 0.9), rgba(18, 18, 18, 0.9)), url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80') center/cover no-repeat;
+        }
+        
+        .transformation-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .transformation-card {
+            background: rgba(30, 30, 30, 0.8);
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .transformation-img {
+            height: 300px;
+            overflow: hidden;
+        }
+        
+        .transformation-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .transformation-card:hover .transformation-img img {
+            transform: scale(1.1);
+        }
+        
+        .transformation-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .transformation-name {
+            font-size: 1.3rem;
+            margin-bottom: 5px;
+        }
+        
+        .transformation-result {
+            color: var(--success);
+            font-weight: 700;
+        }
+        
+        /* Testimonials */
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background: rgba(30, 30, 30, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            font-family: Georgia, serif;
+            color: rgba(255, 42, 109, 0.2);
+            line-height: 1;
+        }
+        
+        .testimonial-text {
+            margin-bottom: 20px;
+            padding-top: 20px;
+            font-style: italic;
+            color: #ddd;
+        }
+        
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+        
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 2px solid var(--primary);
+        }
+        
+        .author-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .author-info h4 {
+            margin-bottom: 5px;
+        }
+        
+        .author-info p {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        
+        /* Pricing Section */
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .pricing-card {
+            background: rgba(30, 30, 30, 0.7);
+            border-radius: 15px;
+            padding: 40px 30px;
+            text-align: center;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .pricing-card.popular {
+            transform: scale(1.05);
+            border-color: var(--primary);
+            z-index: 10;
+        }
+        
+        .popular-tag {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--primary);
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-amount {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 20px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .pricing-features {
+            margin: 25px 0;
+            text-align: left;
+        }
+        
+        .pricing-features li {
+            margin-bottom: 12px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+        
+        .contact-details {
+            margin: 30px 0;
+        }
+        
+        .contact-item {
+            display: flex;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 42, 109, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+        }
+        
+        .contact-text h4 {
+            margin-bottom: 5px;
+        }
+        
+        .contact-text p, .contact-text a {
+            color: #aaa;
+            text-decoration: none;
+        }
+        
+        .contact-text a:hover {
+            color: var(--secondary);
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: rgba(30, 30, 30, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            color: white;
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            height: 150px;
+            resize: vertical;
+        }
+        
+        /* Footer */
+        footer {
+            background: #0a0a0a;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            color: #666;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+            
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(18, 18, 18, 0.95);
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                transition: left 0.3s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .stats {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .pricing-card.popular {
+                transform: scale(1);
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .btn {
+                padding: 12px 25px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">IGNITE</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#programs">Programs</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#transformations">Results</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Transform Your Body. Transform Your Life.</h1>
+            <p>Personalized fitness coaching that delivers real results - online or in-person. Start your journey today!</p>
+            <div class="hero-btns">
+                <a href="#contact" class="btn">Book Free Consultation</a>
+                <a href="#programs" class="btn btn-outline">View Programs</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Section -->
+    <section id="programs">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Programs</h2>
+                <p>Science-backed training designed to deliver maximum results based on your unique goals</p>
+            </div>
+            <div class="programs-grid">
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Strength & Conditioning</h3>
+                        <p>Build serious muscle and power</p>
+                    </div>
+                    <div class="program-body">
+                        <ul class="program-features">
+                            <li><i class="fas fa-check"></i> Personalized workout plans</li>
+                            <li><i class="fas fa-check"></i> Progressive overload programming</li>
+                            <li><i class="fas fa-check"></i> Form correction & technique coaching</li>
+                            <li><i class="fas fa-check"></i> Nutrition guidance</li>
+                        </ul>
+                        <div class="price">From $149/mo</div>
+                        <a href="#contact" class="btn">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Weight Loss Transformation</h3>
+                        <p>Burn fat and reveal your best self</p>
+                    </div>
+                    <div class="program-body">
+                        <ul class="program-features">
+                            <li><i class="fas fa-check"></i> Custom calorie & macro targets</li>
+                            <li><i class="fas fa-check"></i> Metabolic conditioning workouts</li>
+                            <li><i class="fas fa-check"></i> Weekly check-ins & accountability</li>
+                            <li><i class="fas fa-check"></i> Mindset & habit coaching</li>
+                        </ul>
+                        <div class="price">From $179/mo</div>
+                        <a href="#contact" class="btn">Get Started</a>
+                    </div>
+                </div>
+                
+                <div class="program-card">
+                    <div class="program-header">
+                        <h3>Online Coaching</h3>
+                        <p>Expert guidance from anywhere</p>
+                    </div>
+                    <div class="program-body">
+                        <ul class="program-features">
+                            <li><i class="fas fa-check"></i> Video form analysis</li>
+                            <li><i class="fas fa-check"></i> Custom workout & meal plans</li>
+                            <li><i class="fas fa-check"></i> 24/7 messaging support</li>
+                            <li><i class="fas fa-check"></i> Monthly progress assessments</li>
+                        </ul>
+                        <div class="price">From $99/mo</div>
+                        <a href="#contact" class="btn">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img">
+                    <img src="https://nationalpti.org/wp-content/uploads/2014/02/Personal-Trainer.jpg" alt="Coach Alex">
+                </div>
+                <div class="about-text">
+                    <h2>Meet Coach Alex Rivera</h2>
+                    <p>With over 10 years of experience in the fitness industry and certifications from NASM, ACE, and Precision Nutrition, I've helped hundreds of clients transform their bodies and lives.</p>
+                    <p>My approach combines science-backed training methods with personalized attention to your unique goals, challenges, and lifestyle. I don't believe in one-size-fits-all programs - your journey is uniquely yours.</p>
+                    <p>Whether you're looking to lose weight, build muscle, improve athletic performance, or simply feel stronger and more confident, I'm here to guide you every step of the way.</p>
+                    
+                    <div class="stats">
+                        <div class="stat-item">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-text">Transformations</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10+</div>
+                            <div class="stat-text">Years Experience</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">98%</div>
+                            <div class="stat-text">Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Transformations Section -->
+    <section class="transformations" id="transformations">
+        <div class="container">
+            <div class="section-title">
+                <h2>Real Results</h2>
+                <p>See the incredible transformations my clients have achieved</p>
+            </div>
+            <div class="transformation-cards">
+                <div class="transformation-card">
+                    <div class="transformation-img">
+                        <img src="https://heyspotmegirl.com/wp-content/uploads/2014/02/erin-beth-transformation.jpg" alt="Sarah's Transformation">
+                    </div>
+                    <div class="transformation-overlay">
+                        <div class="transformation-name">Sarah J.</div>
+                        <div class="transformation-result">Gain 28 lbs of muscles in 16 weeks</div>
+                    </div>
+                </div>
+                
+                <div class="transformation-card">
+                    <div class="transformation-img">
+                        <img src="data:image/webp;base64,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" alt="Mark's Transformation">
+                    </div>
+                    <div class="transformation-overlay">
+                        <div class="transformation-name">Mark T.</div>
+                        <div class="transformation-result">Gained 15 lbs muscle in 5 months</div>
+                    </div>
+                </div>
+                
+                <div class="transformation-card">
+                    <div class="transformation-img">
+                        <img src="data:image/webp;base64,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" alt="Jessica's Transformation">
+                    </div>
+                    <div class="transformation-overlay">
+                        <div class="transformation-name">Jessica L.</div>
+                        <div class="transformation-result">Lost 42 lbs and reversed prediabetes</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <div class="section-title">
+                <h2>Client Success Stories</h2>
+                <p>Hear from people who transformed their lives with my coaching</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">Working with Coach Alex completely changed my life. I went from struggling to get through a workout to deadlifting twice my bodyweight! His programming is smart, and his support kept me accountable even on tough days.</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael R.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Michael R.</h4>
+                            <p>Strength Program Client</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">I tried every diet and workout plan out there before finding Alex. His holistic approach to nutrition and training finally helped me lose the weight I'd struggled with for years. The weekly check-ins made all the difference!</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Tanya K.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Tanya K.</h4>
+                            <p>Weight Loss Client</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <p class="testimonial-text">As a busy professional, I needed something that worked with my schedule. Alex's online coaching was perfect - flexible but still personalized. I've never felt stronger or more confident in my body!</p>
+                    <div class="testimonial-author">
+                        <div class="author-img">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Priya M.">
+                        </div>
+                        <div class="author-info">
+                            <h4>Priya M.</h4>
+                            <p>Online Coaching Client</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing">
+        <div class="container">
+            <div class="section-title">
+                <h2>Invest In Your Transformation</h2>
+                <p>Choose the perfect plan for your goals and budget</p>
+            </div>
+            <div class="pricing-grid">
+                <div class="pricing-card">
+                    <h3>Starter</h3>
+                    <div class="pricing-amount">$99<span>/mo</span></div>
+                    <p>Perfect for beginners or those on a tight budget</p>
+                    <ul class="pricing-features">
+                        <li>Custom workout plan</li>
+                        <li>Basic nutrition guidance</li>
+                        <li>Weekly check-ins</li>
+                        <li>Form video reviews (1/month)</li>
+                        <li>Access to exercise library</li>
+                    </ul>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+                
+                <div class="pricing-card popular">
+                    <div class="popular-tag">Most Popular</div>
+                    <h3>Transformation</h3>
+                    <div class="pricing-amount">$179<span>/mo</span></div>
+                    <p>Our comprehensive program for serious results</p>
+                    <ul class="pricing-features">
+                        <li>Personalized workout & nutrition plan</li>
+                        <li>Bi-weekly 1-on-1 coaching calls</li>
+                        <li>Unlimited form video reviews</li>
+                        <li>Weekly progress tracking</li>
+                        <li>24/7 messaging support</li>
+                        <li>Accountability partner matching</li>
+                    </ul>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Elite</h3>
+                    <div class="pricing-amount">$299<span>/mo</span></div>
+                    <p>For those who want the ultimate experience</p>
+                    <ul class="pricing-features">
+                        <li>Everything in Transformation plan</li>
+                        <li>Weekly 1-on-1 coaching calls</li>
+                        <li>Custom meal prep service coordination</li>
+                        <li>Biometric progress tracking</li>
+                        <li>Priority 24/7 support</li>
+                        <li>Quarterly in-person session (if local)</li>
+                    </ul>
+                    <a href="#contact" class="btn">Get Started</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Ready To Transform?</h2>
+                <p>Book your free consultation today and take the first step toward your best self</p>
+            </div>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Let's Connect</h3>
+                    <p>Have questions? Want to learn more about which program is right for you? Reach out and let's chat!</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Studio Location</h4>
+                                <p>123 Fitness Avenue, New York, NY</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Phone</h4>
+                                <p>(555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="contact-text">
+                                <h4>Email</h4>
+                                <p>coach@ignitefitness.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form id="consultationForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="goal">Your Primary Goal</label>
+                            <input type="text" id="goal" placeholder="e.g., Lose weight, Build muscle, etc." required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Tell me about your fitness journey</label>
+                            <textarea id="message" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Book Free Consultation</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <a href="#" class="logo">IGNITE</a>
+            <p>Personal Fitness Coaching | Online & In-Person</p>
+            
+            <div class="social-links">
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+                <a href="#"><i class="fab fa-tiktok"></i></a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 IGNITE Fitness. All rights reserved. | Designed to transform lives.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth Scrolling for Navigation Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                }
+            });
+        });
+        
+        // Form Submission
+        const consultationForm = document.getElementById('consultationForm');
+        if (consultationForm) {
+            consultationForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Thank you for your message! We\'ll contact you within 24 hours to schedule your free consultation.');
+                consultationForm.reset();
+            });
+        }
+        
+        // Add scroll effect to header
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(18, 18, 18, 0.98)';
+                header.style.boxShadow = '0 5px 20px rgba(0, 0, 0, 0.2)';
+            } else {
+                header.style.background = 'rgba(18, 18, 18, 0.95)';
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
